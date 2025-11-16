@@ -1,0 +1,82 @@
+package rohita.example.bloodbank.frontend.controllers;
+
+import java.net.http.HttpResponse;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import rohita.example.bloodbank.frontend.HttpUtil;
+
+public class HospitalRegisterController {
+
+    @FXML private TextField name;
+    @FXML private TextField email;
+    @FXML private PasswordField password;
+    @FXML private TextField phone;
+    @FXML private TextField address;
+    @FXML private Label status;
+
+    private final String base = "http://localhost:8080";
+
+    @FXML
+    public void onRegister() {
+
+        status.setText("");
+
+        try {
+            String json = String.format(
+                    "{"
+                        + "\"name\":\"%s\","
+                        + "\"email\":\"%s\","
+                        + "\"password\":\"%s\","
+                        + "\"phone\":\"%s\","
+                        + "\"address\":\"%s\""
+                    + "}",
+                    escape(name.getText()),
+                    escape(email.getText()),
+                    escape(password.getText()),
+                    escape(phone.getText()),
+                    escape(address.getText())
+            );
+
+            new Thread(() -> {
+                try {
+                    HttpResponse<String> resp = HttpUtil.postJson(base + "/api/hospital/register", json);
+
+                    if (resp.statusCode() == 200) {
+                        update("Hospital registered successfully!", false);
+                    } else {
+                        update("Register failed: " + resp.body(), true);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    update("Error: " + e.getMessage(), true);
+                }
+            }).start();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            update("Invalid input format", true);
+        }
+    }
+
+    @FXML
+    public void onCancel() {
+        Stage s = (Stage) name.getScene().getWindow();
+        s.close();
+    }
+
+    private void update(String msg, boolean err) {
+        javafx.application.Platform.runLater(() -> {
+            status.setText(msg);
+            status.setStyle(err ? "-fx-text-fill:red;" : "-fx-text-fill:green;");
+        });
+    }
+
+    private String escape(String s) {
+        return s.replace("\"", "\\\"");
+    }
+}
+

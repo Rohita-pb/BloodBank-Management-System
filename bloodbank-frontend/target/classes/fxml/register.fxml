@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="rohita.example.bloodbank.frontend.controllers.RegisterController"
+      spacing="8" alignment="CENTER">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Donor Register" style="-fx-font-size:16px; -fx-font-weight:bold;"/>
+    <TextField fx:id="name" promptText="Name" />
+    <TextField fx:id="email" promptText="Email" />
+    <PasswordField fx:id="password" promptText="Password" />
+    <TextField fx:id="phone" promptText="Phone" />
+    <TextField fx:id="bloodGroup" promptText="Blood Group (A+, O-, ...)" />
+    <TextField fx:id="hemoglobin" promptText="Hemoglobin (e.g. 12.5)" />
+    <CheckBox fx:id="isAvailable" text="Available to donate" selected="true" />
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Register" onAction="#onRegister" />
+        <Button text="Cancel" onAction="#onCancel" />
+    </HBox>
+
+    <Label fx:id="status" />
+</VBox>
