@@ -30,6 +30,13 @@
         </dependency>
 
         <!-- (Optional) if using HttpClient no extra dependency required (Java 11+ includes it) -->
+        
+        <!-- Jackson for JSON parsing -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.15.2</version>
+        </dependency>
     </dependencies>
 
     <build>

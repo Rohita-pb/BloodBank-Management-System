@@ -6,21 +6,21 @@ import javafx.stage.Stage;
 
 public class DonorDashboardController {
 
-    @FXML private Label status;
+    @FXML private Label welcomeLabel;
 
     @FXML
     public void onViewProfile() {
-        status.setText("Profile view coming soon...");
+        welcomeLabel.setText("Profile view coming soon...");
     }
 
     @FXML
     public void onToggleAvailability() {
-        status.setText("Feature coming soon...");
+        welcomeLabel.setText("Feature coming soon...");
     }
 
     @FXML
     public void onLogout() {
-        Stage stage = (Stage) status.getScene().getWindow();
+        Stage stage = (Stage) welcomeLabel.getScene().getWindow();
         stage.close();
     }
 }

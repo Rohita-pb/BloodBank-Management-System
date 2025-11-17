@@ -1,3 +1,8 @@
-rohita\example\bloodbank\frontend\MainApp.class
+rohita\example\bloodbank\frontend\controllers\HospitalRegisterController.class
+rohita\example\bloodbank\frontend\controllers\DonorDashboardController.class
 rohita\example\bloodbank\frontend\controllers\LoginController.class
+rohita\example\bloodbank\frontend\controllers\HospitalDashboardController$1.class
+rohita\example\bloodbank\frontend\controllers\RegisterController.class
+rohita\example\bloodbank\frontend\MainApp.class
 rohita\example\bloodbank\frontend\HttpUtil.class
+rohita\example\bloodbank\frontend\controllers\HospitalDashboardController.class
